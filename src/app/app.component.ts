@@ -22,11 +22,11 @@ export class AppComponent implements OnInit {
 
   escala: Array<[Date, String]>;
 
-  projetarEscala(dataInicial: Date, dataFinal: string, equipeInicial: string) {
+  projetarEscala(dataInicial: Date, dataFinal: Date, equipeInicial: string) {
     let ponteiroData = dataInicial;
     let retorno = new Array<[Date, String]>();
     let ponteiroEquipe = this.duplas.indexOf(equipeInicial);
-    while (ponteiroData <= dataFinal) {
+    while (ponteiroData.getDate() <= dataFinal.getDate()) {
       if ([1, 2, 3, 4, 5].find(diaSemana => diaSemana === ponteiroData.getDay())) {
         retorno.push([new Date(ponteiroData), this.duplas[ponteiroEquipe]]);
         ponteiroEquipe++;
