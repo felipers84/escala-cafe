@@ -1,7 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<table>
-  <tr *ngFor="let dia of escala">
-    <td>{{ dia[0] | amDateFormat: 'DD/MM/YYYY'}}</td>
+<table cellspacing="0" cellpadding="10">
+  <tr *ngFor="let dia of escala" [ngClass]="dataInformadaEhDiaAtual(dia[0]) ? 'dia-atual':''">
+    <td style="text-align: right">{{ formatarData(dia[0]) }}</td>
     <td>{{ dia[1] }}</td>
   </tr>
 </table>

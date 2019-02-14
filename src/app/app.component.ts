@@ -22,13 +22,13 @@ export class AppComponent implements OnInit {
 
   escala: Array<[Date, String]>;
 
-  projetarEscala(dataInicial: Date, dataFinal: Date, equipeInicial: string) {
+  projetarEscala(dataInicial: Date, dataFinal: string, equipeInicial: string) {
     let ponteiroData = dataInicial;
     let retorno = new Array<[Date, String]>();
     let ponteiroEquipe = this.duplas.indexOf(equipeInicial);
     while (ponteiroData <= dataFinal) {
-      if ([0, 1, 2, 3].find(diaSemana => diaSemana === ponteiroData.getDay())) {
-        retorno.push([ponteiroData, this.duplas[ponteiroEquipe]]);
+      if ([1, 2, 3, 4, 5].find(diaSemana => diaSemana === ponteiroData.getDay())) {
+        retorno.push([new Date(ponteiroData), this.duplas[ponteiroEquipe]]);
         ponteiroEquipe++;
         if (ponteiroEquipe === this.duplas.length) {
           ponteiroEquipe = 0;
@@ -39,10 +39,13 @@ export class AppComponent implements OnInit {
     this.escala = retorno;
   }
 
+  formatarData = (data: Date) => `${(data.getDate())}/${data.getMonth() + 1}/${data.getFullYear()}`;
+  dataInformadaEhDiaAtual = (data: Date) => (data.setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0));
+
   ngOnInit() {
     let dataFinal = new Date();
-    dataFinal = dataFinal.setDate(new Date().getDate() + 100);
-    this.projetarEscala(new Date(), dataFinal, 'Renato / Claudius');
+    dataFinal.setDate(new Date().getDate() + 365);
+    this.projetarEscala(new Date(2019, 1, 12), dataFinal, 'Marcela / Itaquera');
   }
 
 
