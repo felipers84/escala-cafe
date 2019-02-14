@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     let ponteiroData = dataInicial;
     let retorno = new Array<[Date, String]>();
     let ponteiroEquipe = this.duplas.indexOf(equipeInicial);
-    while (ponteiroData.getDate() <= dataFinal.getDate()) {
+    while (ponteiroData.setHours(0, 0, 0, 0) <= dataFinal.setHours(0, 0, 0, 0)) {
       if ([1, 2, 3, 4, 5].find(diaSemana => diaSemana === ponteiroData.getDay())) {
         retorno.push([new Date(ponteiroData), this.duplas[ponteiroEquipe]]);
         ponteiroEquipe++;
