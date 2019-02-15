@@ -1,4 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <a href="https://github.com/felipers84/escala-cafe"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_red_aa0000.png?resize=149%2C149"
+      class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+</div>
+
 <table cellspacing="0" cellpadding="10">
   <tr *ngFor="let dia of escala" [ngClass]="dataInformadaEhDiaAtual(dia[0]) ? 'dia-atual':''">
     <td style="text-align: right">{{ formatarData(dia[0]) }}</td>
