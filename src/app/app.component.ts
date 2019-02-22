@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+const GOOGLE_CALENDAR_URL = 'https://www.google.com/calendar/render';
+
+// 'https://www.google.com/calendar/render?action=TEMPLATE&text=tetes&location=&details=&dates=20190221T040000Z/20190221T040000Z'
 
 @Component({
   selector: 'app-root',
@@ -9,7 +13,6 @@ export class AppComponent implements OnInit {
   title = 'escala-cafe';
 
   duplas = [
-
     'Paulo Guyss / Tenylson',
     'Marcela / Itaquera',
     'Cleiton / PauLoL',
@@ -40,6 +43,23 @@ export class AppComponent implements OnInit {
 
   formatarData = (data: Date) => `${(data.getDate())}/${data.getMonth() + 1}/${data.getFullYear()}`;
   dataInformadaEhDiaAtual = (data: Date) => (data.setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0));
+  gerarLinkGoogleCalendar = (data: Date, coitados: string) => {
+    const addParam = (url, key, value, joinChar?) => `${url}${joinChar}${key}=${encodeURI(value).replace(/%20/g, '+')}`;
+    const dataISO = (data: Date) => data.toISOString().replace(/[^\w\s]/gi, '').replace(/000Z$/g, 'Z');
+    const inicio = data.setHours(7, 0, 0, 0) ? dataISO(data) : '';
+    const fim = data.setHours(18, 0, 0, 0) ? dataISO(data) : '';
+    const endereco = 'R. José Camacho, 585 - Olaria, Porto Velho - RO, 76801-330';
+
+    let url = addParam(GOOGLE_CALENDAR_URL, 'action', `TEMPLATE`, '?');
+    url = addParam(url, 'text', `Fazer o café! ${coitados}`, '&');
+    url = addParam(url, 'dates', `${inicio}/${fim}`, '&');
+    url = addParam(url, 'ctz', 'America/Porto_Velho', '&');
+    url = addParam(url, 'details', `Ver a escala completa:  ${window.location.href}`, '&');
+    url = addParam(url, 'location', endereco, '&');
+    url = addParam(url, 'trp', `false`, '&');
+    url = addParam(url, 'sf', `true`, '&');
+    return url;
+  };
 
   ngOnInit() {
     let dataFinal = new Date();
