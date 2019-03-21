@@ -25,12 +25,15 @@ export class AppComponent implements OnInit {
   escala: Array<[Date, String]>;
 
   projetarEscala(dataInicial: Date, dataFinal: Date, equipeInicial: string) {
+    let segundaFeira = this.pegarSegundaFeiraDaSemana(new Date());
     let ponteiroData = dataInicial;
     let retorno = new Array<[Date, String]>();
     let ponteiroEquipe = this.duplas.indexOf(equipeInicial);
     while (ponteiroData.setHours(0, 0, 0, 0) <= dataFinal.setHours(0, 0, 0, 0)) {
       if ([1, 2, 3, 4, 5].find(diaSemana => diaSemana === ponteiroData.getDay())) {
-        retorno.push([new Date(ponteiroData), this.duplas[ponteiroEquipe]]);
+        if (ponteiroData >= segundaFeira) {
+          retorno.push([new Date(ponteiroData), this.duplas[ponteiroEquipe]]);
+        }
         ponteiroEquipe++;
         if (ponteiroEquipe === this.duplas.length) {
           ponteiroEquipe = 0;
@@ -43,6 +46,11 @@ export class AppComponent implements OnInit {
 
   formatarData = (data: Date) => `${(data.getDate())}/${data.getMonth() + 1}/${data.getFullYear()}`;
   dataInformadaEhDiaAtual = (data: Date) => (data.setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0));
+  pegarSegundaFeiraDaSemana = (data: Date) => {
+    data = new Date(data.getFullYear(), data.getMonth(), data.getDate());
+    let segunda = data.getDate() - data.getDay() + (data.getDay() ? 1 : -6);
+    return new Date(data.setDate(segunda));
+  };
   gerarLinkGoogleCalendar = (data: Date, coitados: string) => {
     const addParam = (url, key, value, joinChar?) => `${url}${joinChar}${key}=${encodeURI(value).replace(/%20/g, '+')}`;
     const dataISO = (data: Date) => data.toISOString().replace(/[^\w\s]/gi, '').replace(/000Z$/g, 'Z');
