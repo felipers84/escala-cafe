@@ -45,6 +45,8 @@ export class AppComponent implements OnInit {
     this.escala = retorno;
   }
 
+
+
   formatarData = (data: Date) => `${(data.getDate())}/${data.getMonth() + 1}/${data.getFullYear()}`;
   dataInformadaEhDiaAtual = (data: Date) => (data.setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0));
   pegarSegundaFeiraDaSemana = (data: Date) => {
