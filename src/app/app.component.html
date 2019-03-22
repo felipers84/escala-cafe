@@ -9,7 +9,7 @@
 
 <table cellspacing="0" cellpadding="10">
   <tr *ngFor="let dia of escala" [ngClass]="dataInformadaEhDiaAtual(dia[0]) ? 'dia-atual':''">
-    <td style="text-align: right">{{ formatarData(dia[0]) }}</td>
+    <td style="text-align: right">{{ dia[0] | date: 'EEEE' | traduz  }} - {{ formatarData(dia[0]) }}</td>
     <td>
       <a [href]="gerarLinkGoogleCalendar(dia[0], dia[1])">{{ dia[1] }}</a>
     </td>
