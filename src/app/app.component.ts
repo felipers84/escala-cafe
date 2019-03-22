@@ -14,12 +14,13 @@ export class AppComponent implements OnInit {
 
   duplas = [
     'Paulo Guyss / Tenylson',
-    'Marcela / Itaquera',
+    'Maurício / Itaquera',
     'Cleiton / PauLoL',
     'Renato / Claudius',
     'Gilson / Vismar',
     'Felipe Campos / Armando',
-    'Tibério / Shiba'
+    'Tibério / Shiba',
+    'Telles / Andrew'
   ];
 
   escala: Array<[Date, String]>;
@@ -64,7 +65,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     let dataFinal = new Date();
     dataFinal.setDate(new Date().getDate() + 365);
-    this.projetarEscala(new Date(2019, 1, 12), dataFinal, 'Marcela / Itaquera');
+    this.projetarEscala(new Date(2019, 3, 22), dataFinal, 'Maurício / Itaquera');
   }
 
 
