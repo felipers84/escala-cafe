@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     'Felipe Campos / Armando',
     'Tibério / Shiba',
     'Telles / Andrew',
-    'Jônatas'
+    'Jônatas / Elielma'
   ];
 
   escala: Array<[Date, String]>;
