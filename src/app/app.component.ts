@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 const GOOGLE_CALENDAR_URL = 'https://www.google.com/calendar/render';
 
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
 
   duplas = [
     'Paulo Guyss / Tenylson',
+    'Junior',
     'Maurício / Itaquera',
     'Cleiton / PauLoL',
     'Renato / Claudius',
@@ -76,7 +77,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     let dataFinal = new Date();
     dataFinal.setDate(new Date().getDate() + 365);
-    this.projetarEscala(new Date(2019, 2, 22), dataFinal, 'Maurício / Itaquera');
+    this.projetarEscala(new Date(2019, 4, 23), dataFinal, 'Paulo Guyss / Tenylson');
   }
 
 
