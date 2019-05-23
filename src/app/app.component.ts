@@ -25,6 +25,10 @@ export class AppComponent implements OnInit {
     'Jônatas / Elielma'
   ];
 
+  feriados: Array<Date> = [
+    new Date(2019, 4, 24)
+  ]
+
   escala: Array<[Date, String]>;
 
   projetarEscala(dataInicial: Date, dataFinal: Date, equipeInicial: string) {
@@ -33,7 +37,7 @@ export class AppComponent implements OnInit {
     let retorno = new Array<[Date, String]>();
     let ponteiroEquipe = this.duplas.indexOf(equipeInicial);
     while (ponteiroData.setHours(0, 0, 0, 0) <= dataFinal.setHours(0, 0, 0, 0)) {
-      if ([1, 2, 3, 4, 5].find(diaSemana => diaSemana === ponteiroData.getDay())) {
+      if ([1, 2, 3, 4, 5].find(diaSemana => diaSemana === ponteiroData.getDay()) && !this.feriados.find(f => f.getTime() == ponteiroData.getTime())) {
         if (ponteiroData >= segundaFeira) {
           retorno.push([new Date(ponteiroData), this.duplas[ponteiroEquipe]]);
         }
