@@ -13,8 +13,7 @@ export class AppComponent implements OnInit {
   title = 'escala-cafe';
 
   duplas = [
-    'Paulo Guyss / Tenylson',
-    'Junior',
+    'Paulo Guyss / Tenylson',    
     'Maurício / Itaquera',
     'Cleiton / PauLoL',
     'Renato / Claudius',
