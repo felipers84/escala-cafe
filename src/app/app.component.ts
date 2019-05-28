@@ -25,7 +25,13 @@ export class AppComponent implements OnInit {
   ];
 
   feriados: Array<Date> = [
-    new Date(2019, 4, 24)
+    new Date(2019, 4, 24),
+    new Date(2019, 4, 28),
+    new Date(2019, 6, 20),
+    new Date(2019, 6, 21),
+    new Date(2019, 10, 2),
+    new Date(2019, 10, 28),
+    new Date(2019, 11, 15)
   ]
 
   escala: Array<[Date, String]>;
