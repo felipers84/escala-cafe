@@ -80,7 +80,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     let dataFinal = new Date();
     dataFinal.setDate(new Date().getDate() + 365);
-    this.projetarEscala(new Date(2019, 4, 23), dataFinal, 'Telles / Andrew');
+    this.projetarEscala(new Date(2019, 6, 22), dataFinal, 'Telles / Andrew');
   }
 
 
